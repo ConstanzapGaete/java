@@ -1,0 +1,72 @@
+
+package cl.duoc.ppp.models;
+
+import java.time.LocalDate;
+import java.time.Month;
+
+
+public class Mascota {
+    private String nombre;
+    private LocalDate fechaNacimineto;
+    private int numeroChip;
+    private String nombreDueno;
+
+    public Mascota(String nombre, LocalDate fechaNacimineto, int numeroChip, String nombreDueno) {
+        this.nombre = nombre;
+        this.fechaNacimineto = fechaNacimineto;
+        this.numeroChip = numeroChip;
+        this.nombreDueno = nombreDueno;
+  
+    }
+    
+    public Mascota() {
+        this.nombre = "";
+        this.fechaNacimineto = LocalDate.now();
+        this.numeroChip = 0;
+        this.nombreDueno = "";
+  
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public LocalDate getFechaNacimineto() {
+        return fechaNacimineto;
+    }
+
+    public void setFechaNacimineto(LocalDate fechaNacimineto) {
+        this.fechaNacimineto = fechaNacimineto;
+    }
+
+    public int getNumeroChip() {
+        return numeroChip;
+    }
+
+    public void setNumeroChip(int numeroChip) {
+        this.numeroChip = numeroChip;
+    }
+
+    public String getNombreDueno() {
+        return nombreDueno;
+    }
+
+    public void setNombreDueno(String nombreDueno) {
+        this.nombreDueno = nombreDueno;
+    }
+    
+    public void setFechaNacimineto(int anio, int mes, int dia){
+        this.fechaNacimineto= LocalDate.of(anio,mes,dia);
+    }
+    
+    @Override
+    public String toString(){
+        return  this.nombre+""+this.numeroChip+" nacido el "+this.fechaNacimineto.toString()+" Dueño : "+this.nombreDueno;
+    }
+
+ 
+}
