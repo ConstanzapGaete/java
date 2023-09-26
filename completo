@@ -1,0 +1,166 @@
+public class Ahorasiquesi {
+
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+        String opcion;
+        Mascotass array[]=new Mascotass[15];
+        int contador=0;
+        do{
+            System.out.println("Bienvenidooo");
+            System.out.println("1 Crea mascota");
+            System.out.println("2 Edita mascota ");
+            System.out.println("3 Elimina Mascota");
+            System.out.println("4 Lista de mascotas");
+            System.out.println("5 Salir ");
+            opcion=sc.nextLine();
+            opcion=opcion.toLowerCase().trim();
+            
+            switch(opcion){
+                
+                case "1":
+                    System.out.println("Crea mascota");
+                    System.out.println("Ingres el nombre de tu mascota");
+                    String nombre;
+                    nombre=sc.nextLine();
+                    System.out.println("Ingres el nombre del dueño");
+                    String dueno;
+                    dueno=sc.nextLine();
+                    System.out.println("Ingres el numero de chip");
+                    String numerochip=sc.nextLine();
+                    int chip=Integer.parseInt(numerochip);
+                    System.out.println("Ingresa la fecha de nacimiento dd/mm/aaaa");
+                    String fechan=sc.nextLine();
+                    String[] fecha =fechan.split("/");
+                    int dia =Integer.parseInt(fecha[0]);
+                    int mes =Integer.parseInt(fecha[1]);
+                    int anio= Integer.parseInt(fecha[2]);
+                    Mascotass m1=new Mascotass();
+                    m1.setNombre(nombre);
+                    m1.setDueno(dueno);
+                    m1.setChip(chip);
+                    m1.setFechan(anio,mes,dia);
+                    array[contador]=m1;
+                    contador++;
+                    
+                    
+                    
+                    break;
+                case "2":
+                    System.out.println("Edita mascota ");
+                    System.out.println("ingresa el nombre de la mascota a editar");
+                    nombre=sc.nextLine();
+                    int encontrar=0;
+                    for (int i=0; i<contador;i++){
+                        if (array[i].getNombre()==nombre){
+                            encontrar=i;
+                        }
+                    }
+                    array[encontrar]=new Mascotass();
+                    System.out.println("Ingres el nombre de tu mascota");
+                    nombre=sc.nextLine();
+                    System.out.println("Ingres el nombre del dueño");
+                    dueno=sc.nextLine();
+                    System.out.println("Ingres el numero de chip");
+                    chip=sc.nextInt();
+                    Mascotass m2=new Mascotass();
+                    m2.setNombre(nombre);
+                    m2.setDueno(dueno);
+                    m2.setChip(chip);
+                    array[contador]=m2;
+                    contador++;
+                    break;
+                case "3":
+                    System.out.println("Elimina Mascota");
+                    System.out.println("ingresa El nombre de la Mascota a eliminar : ");
+                    nombre=sc.nextLine();
+                    int borrar=0;
+                    for (int i=0;i<contador;i++){
+                        if (array[i].getNombre()==nombre){
+                            borrar=i;
+                        }
+                    }
+                    array[borrar]=null;
+                    break;
+                case "4":
+                    System.out.println("Lista de mascotas");
+                    for (int i=0;i<contador;i++){
+                        System.out.println(array[i]);
+                    }
+                    break;
+                case "5":
+                    System.out.println("adiu");
+                    break;
+                   
+            }
+            
+        }while(!"5".equals(opcion));
+    }
+}
+
+package cl.duoc.ahorasiquesi.models;
+
+import java.time.LocalDate;
+import java.time.Month;
+
+public class Mascotass {
+    private String nombre;
+    private String dueno;
+    private int chip;
+    private LocalDate fechan;
+
+    public Mascotass(String nombre, String dueno, int chip, LocalDate fechan) {
+        this.nombre = nombre;
+        this.dueno = dueno;
+        this.chip = chip;
+        this.fechan = fechan;
+    }
+    
+     public Mascotass() {
+        this.nombre = "";
+        this.dueno = "";
+        this.chip = 0;
+        this.fechan = LocalDate.now();
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDueno() {
+        return dueno;
+    }
+
+    public void setDueno(String dueno) {
+        this.dueno = dueno;
+    }
+
+    public int getChip() {
+        return chip;
+    }
+
+    public void setChip(int chip) {
+        this.chip = chip;
+    }
+
+    public LocalDate getFechan() {
+        return fechan;
+    }
+
+    public void setFechan(LocalDate fechan) {
+        this.fechan = fechan;
+    }
+    public void setFechan(int anio,int mes, int dia) {
+        this.fechan = LocalDate.of(anio, mes, dia);
+    }
+    
+    @Override
+    public String toString(){
+        return this.nombre+" Nombre del Dueño : "+this.dueno+" Con chip : "+this.chip+" Nacio el : "+this.fechan.toString();
+    }
+    
+}
