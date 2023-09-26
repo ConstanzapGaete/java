@@ -1,0 +1,118 @@
+ public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String opcion;
+        Mascota[] array= new Mascota[15];
+        
+        do{
+            System.out.println("******BIENVENIDO******");
+            System.out.println("1-CREAR MASCOTA");
+            System.out.println("2- EDITAR MASCOTA");
+            System.out.println("3- ELIMINAR MASCOTA");
+            System.out.println("4- LISTAR MASCOTA ");
+            System.out.println("5- SALIR ");
+            opcion=sc.nextLine();
+            opcion=opcion.toLowerCase().trim();
+            int contador=0;
+            switch(opcion){
+                case "1":
+                    System.out.println("1-CREAR MASCOTA");
+                    System.out.println("*****Ingrese nombre*****");
+                    String nombre=sc.nextLine();
+                    System.out.println("*****Ingrese Dueño*****");
+                    String nombreDueno=sc.nextLine();
+                    System.out.println("*****Ingrese Chip*****");
+                    String Chip=sc.nextLine();
+                    System.out.println("*****Ingrese Fecha de nacimiento dd/mm/aaaa*****");
+                    String fechaNacimineto=sc.nextLine();
+                    int numeroChip= Integer.parseInt(Chip);
+                    String[] fecha =fechaNacimineto.split("/");
+                    int dia =Integer.parseInt(fecha[0]);
+                    int mes =Integer.parseInt(fecha[1]);
+                    int anio= Integer.parseInt(fecha[2]);
+                    Mascota m2=new Mascota();
+                    m2.setNombre(nombre);
+                    m2.setNombreDueno(nombreDueno);
+                    m2.setNumeroChip(numeroChip);
+                    m2.setFechaNacimineto(anio,mes,dia);
+                  
+                    array[contador]=m2;
+                    contador++;
+                    
+                    break;
+
+
+
+
+class 
+
+package cl.duoc.ppp.models;
+
+import java.time.LocalDate;
+import java.time.Month;
+
+
+public class Mascota {
+    private String nombre;
+    private LocalDate fechaNacimineto;
+    private int numeroChip;
+    private String nombreDueno;
+
+    public Mascota(String nombre, LocalDate fechaNacimineto, int numeroChip, String nombreDueno) {
+        this.nombre = nombre;
+        this.fechaNacimineto = fechaNacimineto;
+        this.numeroChip = numeroChip;
+        this.nombreDueno = nombreDueno;
+  
+    }
+    
+    public Mascota() {
+        this.nombre = "";
+        this.fechaNacimineto = LocalDate.now();
+        this.numeroChip = 0;
+        this.nombreDueno = "";
+  
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public LocalDate getFechaNacimineto() {
+        return fechaNacimineto;
+    }
+
+    public void setFechaNacimineto(LocalDate fechaNacimineto) {
+        this.fechaNacimineto = fechaNacimineto;
+    }
+
+    public int getNumeroChip() {
+        return numeroChip;
+    }
+
+    public void setNumeroChip(int numeroChip) {
+        this.numeroChip = numeroChip;
+    }
+
+    public String getNombreDueno() {
+        return nombreDueno;
+    }
+
+    public void setNombreDueno(String nombreDueno) {
+        this.nombreDueno = nombreDueno;
+    }
+    
+    public void setFechaNacimineto(int anio, int mes, int dia){
+        this.fechaNacimineto= LocalDate.of(anio,mes,dia);
+    }
+    
+    @Override
+    public String toString(){
+        return  this.nombre+""+this.numeroChip+" nacido el "+this.fechaNacimineto.toString()+" Dueño : "+this.nombreDueno;
+    }
+
+ 
+}
