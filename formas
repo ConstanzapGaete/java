@@ -1,4 +1,4 @@
-
+// main 
 package cl.duocuc.forma;
 
 import cl.duocuc.forma.DTO.Cuadrado;
@@ -19,3 +19,221 @@ public class Forma {
     }
     
 }
+// formasDTO
+package cl.duocuc.forma.DTO;
+
+import cl.duocuc.forma.interf.Iforma;
+
+
+public class Formas implements Iforma{
+    private String nombre;
+    private String color;
+    private int ejex;
+    private int ejey;
+    private String tipoFigura;
+    private int escala;
+
+    public Formas(String nombre, String color, int ejex, int ejey, String tipoFigura) {
+        this.nombre = nombre;
+        this.color = color;
+        this.ejex = ejex;
+        this.ejey = ejey;
+        this.tipoFigura = tipoFigura;
+        this.escala=escala;
+    }
+    
+     public Formas() {
+        this.nombre = " sin nombre ";
+        this.color = "sin color";
+        this.ejex = 0;
+        this.ejey = 0;
+        this.tipoFigura = "sin tipo";
+        this.escala=0;
+    }
+
+    public int getEscala() {
+        return escala;
+    }
+
+    public void setEscala(int escala) {
+        this.escala = escala;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getEjex() {
+        return ejex;
+    }
+
+    public void setEjex(int ejex) {
+        this.ejex = ejex;
+    }
+
+    public int getEjey() {
+        return ejey;
+    }
+
+    public void setEjey(int ejey) {
+        this.ejey = ejey;
+    }
+
+    public String getTipoFigura() {
+        return tipoFigura;
+    }
+
+    public void setTipoFigura(String tipoFigura) {
+        this.tipoFigura = tipoFigura;
+    }
+
+    @Override
+    public String toString() {
+        return "Formas{" + "nombre=" + nombre + ", color=" + color + ", ejex=" + ejex + ", ejey=" + ejey + ", tipoFigura=" + tipoFigura + '}';
+    }
+
+    @Override
+    public String cambiarColor(String CamColor) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String cambiarUbicacion(int ejex, int ejey) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int areaF() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int perimetro() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int volumen() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int escalar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
+}
+//REctangulo DTO 
+
+package cl.duocuc.forma.DTO;
+
+public class Rectangulo extends Formas{
+    private int ladomenor;
+    private int ladomayor;
+
+    public Rectangulo(int ladomenor, int ladomayor, String nombre, String color, int ejex, int ejey) {
+        super(nombre, color, ejex, ejey, "rectangulo");
+        this.ladomenor = ladomenor;
+        this.ladomayor = ladomayor;
+    }
+
+    public Rectangulo(int ladomenor, int ladomayor) {
+        this.ladomenor = ladomenor;
+        this.ladomayor = ladomayor;
+    }
+  public Rectangulo() {
+        super();
+        this.ladomenor = 0;
+        this.ladomayor = 0;
+    }
+
+
+    public int getLadomenor() {
+        return ladomenor;
+    }
+
+    public void setLadomenor(int ladomenor) {
+        this.ladomenor = ladomenor;
+    }
+
+    public int getLadomayor() {
+        return ladomayor;
+    }
+
+    public void setLadomayor(int ladomayor) {
+        this.ladomayor = ladomayor;
+    }
+
+    @Override
+    public int areaF() {
+      return this.ladomayor*this.ladomenor;
+    }
+
+    @Override
+    public int perimetro() {
+        return this.ladomayor*2+this.ladomenor*2;
+    }
+
+    @Override
+    public int escalar() {
+       return (this.ladomayor*2+this.ladomenor*2)*this.getEscala();
+    }
+    
+    @Override
+    public String toString() {
+       return super.toString()+" lado Menor "+ladomenor+" lado Mayor "+ladomayor+" Area "+this.areaF()+" Perimetro "+this.perimetro();
+    }
+ 
+
+    
+}
+
+///cuadrado DTO
+package cl.duocuc.forma.DTO;
+
+public class Cuadrado extends Rectangulo{
+
+    public Cuadrado(int ladomenor, int ladomayor, String nombre, String color, int ejex, int ejey) {
+        super(ladomenor, ladomayor, nombre,  color,  ejex,  ejey);      
+        this.setTipoFigura("cuadrado");
+        this.setLadomayor(20);
+        this.setLadomenor(20);
+        this.setNombre("cubito");
+    }
+
+    @Override
+    public String getColor() {
+        return super.getColor()+this.getNombre(); 
+    }
+
+}
+
+///interf 
+
+
+package cl.duocuc.forma.interf;
+
+
+public interface Iforma {
+    public String cambiarColor(String CamColor);
+    public String cambiarUbicacion(int ejex,int ejey);
+    public int areaF();
+    public int perimetro();
+    public int volumen();
+    public int escalar();
+    
+}
+
