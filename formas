@@ -1,0 +1,21 @@
+
+package cl.duocuc.forma;
+
+import cl.duocuc.forma.DTO.Cuadrado;
+import cl.duocuc.forma.DTO.Eclipse;
+import cl.duocuc.forma.DTO.Rectangulo;
+
+public class Forma {
+
+    public static void main(String[] args) {
+        Rectangulo uno=new Rectangulo (2, 20, "asd", "sdas", 2, 20);
+        System.out.println(uno);
+        Cuadrado c=new Cuadrado(20, 20, "cubito", "ñe", 20, 20);
+        
+         System.out.println(c);
+        Eclipse a=new Eclipse(20, 30, "ecli", "ñeee", 20, 30);
+        System.out.println(a);
+        
+    }
+    
+}
